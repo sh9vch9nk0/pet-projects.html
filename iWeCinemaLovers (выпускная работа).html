@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>I/We Cinema Lovers</title>
+    <style>
+      a {
+        color: black;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      a:visited {
+        color: #724060;
+      }
+      .advantages {
+        border: solid #a070a1;
+        border-radius: 10px;
+        height: 170px;
+        padding: 10px 10px;
+        width: 300px;
+      }
+      .advantages:hover {
+        cursor: pointer;
+        transform: scale(2);
+      }
+      aside {
+        display: block;
+      }
+      #asideLeft,
+      #asideRight {
+        background: #fdf3f3;
+        display: block;
+        height: 100%;
+        position: fixed;
+        width: 300px;
+      }
+      #asideLeft {
+        margin-left: -8px;
+        margin-right: 300px;
+        margin-top: 102px;
+      }
+      #asideRight {
+        margin-left: 1210px;
+        margin-top: 102px;
+      }
+      body {
+        background-color: #fdf3f3;
+        color: black;
+        float: left;
+        font-family: Georgia, serif;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.2;
+        width: 100%;
+      }
+      .body-container {
+        margin-top: 80px;
+        text-align: center;
+      }
+      button {
+        background-color: rgba(0, 0, 0, 0);
+        border: 1px solid #724060;
+        border-radius: 30px;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        font-size: 14px;
+        margin: 20px 0px;
+        padding: 15px 20px;
+      }
+      button:hover {
+        color: #fdf3f3;
+        background-color: #a070a1;
+        transition: all 200ms ease-in-out;
+      }
+      .changeButtons {
+        display: flex;
+        flex-direction: row;
+        justify-self: center;
+      }
+      .filmsList {
+        display: inline-block;
+        list-style: none;
+        margin-right: 20px;
+        max-width: 400px;
+        padding: 10px 0;
+        text-align: center;
+        transition: all 200ms ease-in-out;
+      }
+      .filmsList:hover {
+        border: 1px solid rgb(255, 255, 255);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+      }
+
+      .fixed-top {
+        background: linear-gradient(
+          0deg,
+          rgba(253, 243, 243, 1) 0%,
+          rgba(248, 231, 231, 1) 11%,
+          rgba(160, 112, 161, 1) 70%,
+          rgba(114, 64, 96, 1) 100%,
+          rgba(114, 64, 96, 1) 100%
+        );
+        border: solid 1px rgba(248, 231, 231, 1) 11%;
+        color: white;
+        font-family: Georgia, serif;
+        font-size: medium;
+        font-variant: normal;
+        font-weight: 700;
+        height: 120px;
+        letter-spacing: -0.8px;
+        margin: -20px 0px -20px -8px;
+        position: fixed;
+        text-align: center;
+        text-shadow: 1px 1px 1px darkmagenta, 2px 2px 1px darkmagenta;
+        text-transform: capitalize;
+        width: 100%;
+        word-spacing: 1.6px;
+      }
+
+      .h1 {
+        color: #a070a1;
+        margin-right: 500px;
+        text-align: center;
+      }
+
+      hr {
+        border: 2px solid #a070a1;
+      }
+
+      .minus {
+        background: #724060;
+        border: 2px solid #724060;
+        border-radius: 3px;
+        color: #fff;
+        cursor: pointer;
+        font-size: 20px;
+        height: 14px;
+        line-height: 45%;
+        margin: 0 auto;
+        padding: 0 0 12px 0;
+        transition: all 200ms ease;
+        width: 16px;
+      }
+
+      .minus:hover {
+        background: white;
+        color: #1a64d6;
+        border: 2px solid #1a64d6;
+      }
+
+      .menuPicture {
+        display: block;
+        height: 170px;
+        padding: 10px 25px;
+        width: 160px;
+      }
+
+      .plus {
+        background: #724060;
+        border: 2px solid #724060;
+        border-radius: 3px;
+        color: #fff;
+        cursor: pointer;
+        font-size: 20px;
+        height: 14px;
+        line-height: 60%;
+        margin: 0 auto;
+        padding: 0 0 12px 0;
+        transition: all 200ms ease;
+        width: 16px;
+      }
+
+      .plus:hover {
+        background: white;
+        color: #7911a1;
+        border: 2px solid #7911a1;
+      }
+
+      .repertoire {
+        display: block;
+        height: 227px;
+        padding: 10px 25px;
+        width: 160px;
+      }
+      .signIn,
+      .signUp {
+        background-color: rgba(0, 0, 0, 0);
+        border: 1px solid #724060;
+        border-radius: 30px;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        display: inline;
+        font-size: 14px;
+        margin-top: -10px;
+        padding: 10px 20px;
+        position: fixed;
+      }
+      .signIn:hover,
+      .signUp:hover {
+        background-color: #fdf3f3;
+        transition: all 200ms ease-in-out;
+      }
+      .signIn {
+        display: flex;
+        margin-left: 1300px;
+      }
+      .signUp {
+        display: flex;
+        margin-left: 1400px;
+      }
+      table {
+        margin-left: 15px;
+      }
+      td,
+      th {
+        background-color: #f8e7e7;
+        border: 1px solid #724060;
+        border-radius: 10px;
+        padding: 15px;
+        text-align: center;
+      }
+      td:nth-child(odd),
+      th:nth-child(odd) {
+        background-color: #a070a1;
+      }
+      ul {
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="fixed-top">
+        <h1><i>I/We </i> 💗 <i>Cinema</i></h1>
+        <p>
+          <button class="signIn">Sign in</button>
+          <button class="signUp">Sign up</button>
+        </p>
+      </div>
+    </header>
+    <aside id="asideLeft">
+      <br />
+      <table id="workingHours">
+        <tbody>
+          <div style="text-align: center">
+            <strong> Our Schedule </strong>
+          </div>
+          <br />
+          <tr>
+            <th>Film</th>
+            <th>Date</th>
+            <th>Time</th>
+          </tr>
+          <tr>
+            <td>Twilight (PG-13)</td>
+            <td>04.07</td>
+            <td>11:00</td>
+          </tr>
+          <tr>
+            <td>Romeo + Juliet (PG-13)</td>
+            <td>04.07</td>
+            <td>15:00</td>
+          </tr>
+          <tr>
+            <td>Great Gatsby (PG-13)</td>
+            <td>04.07</td>
+            <td>17:00</td>
+          </tr>
+          <tr>
+            <td>The Twilight Saga: New Moon (PG-13)</td>
+            <td>11.07</td>
+            <td>👀</td>
+          </tr>
+          <tr>
+            <td>Jungle Cruise (PG-13)</td>
+            <td>12.07</td>
+            <td>👀</td>
+          </tr>
+          <tr>
+            <td>Jumanji: The Next Level (PG-13)</td>
+            <td>13.07</td>
+            <td>👀</td>
+          </tr>
+        </tbody>
+      </table>
+      <br />
+    </aside>
+    <aside id="asideRight">
+      <br />
+      <div style="text-align: center">
+        <strong> Our Cinemas: </strong>
+      </div>
+      <ul>
+        <li class="filmsList">
+          <a href="https://goo.gl/maps/f7Pf9LH6Ceu8JfaV9" target="_blank"
+            >New N Rd, Exeter</a
+          >
+        </li>
+        <li class="filmsList">
+          <a href="https://goo.gl/maps/xyJDissbULB4Zouo8" target="_blank">
+            Budlake Rd, Marsh Barton, Exeter</a
+          >
+        </li>
+        <li class="filmsList">
+          <a href="https://goo.gl/maps/fhsdGg8JB9bnPteYA" target="_blank">
+            6 Nurseries Cl, Exton</a
+          >
+        </li>
+        <br />
+        <br />
+        <div style="text-align: center"><strong> Opening Soon 😍:</strong></div>
+        <br />
+        <li class="filmsList">
+          <a href="https://goo.gl/maps/7667iXm4L75jW8ZZ8" target="_blank"
+            >61 Curzon Rd, London
+          </a>
+        </li>
+      </ul>
+    </aside>
+    <div class="body-container">
+      <br />
+      <br />
+      <h1 class="h1"><i>Why choose us?</i> 🤗</h1>
+      <ul>
+        <li>
+          <div style="display: inline-block; vertical-align: top">
+            <img
+              alt="Cinema screen"
+              class="advantages"
+              src="https://images.cinemaexpress.com/uploads/user/imagelibrary/2019/9/8/original/HiQ_19.jpg?w=640&dpr=1.3"
+            />
+          </div>
+          <div style="display: inline-block; text-align: left">
+            <p><strong> Screen </strong></p>
+
+            <p>
+              With the size of a 5-story building and two projectors of a new
+              generation,
+            </p>
+            <p>IMAX technology perfectly creates the visuals,</p>
+            <p>while custom loudspeakers and subwoofers deliver</p>
+            <p>the best sound quality for your great sound experience.</p>
+          </div>
+        </li>
+        <li>
+          <div style="display: inline-block; vertical-align: top">
+            <img
+              alt="Cinema room"
+              class="advantages"
+              src="https://i2.wp.com/www10.aeccafe.com/blogs/arch-showcase/files/2014/10/%C2%ACPeter-Guenzel_SPIJKENISSE_07.jpg?resize=600%2C375&ssl=1"
+            />
+          </div>
+          <div style="display: inline-block; text-align: left">
+            <p><strong> Cinema room </strong></p>
+            <p>
+              The design for our cinemas is inspired by both premium comfort and
+              with
+            </p>
+            <p>the specifics of the latest technologies.</p>
+            <p>Upholstered armchairs with reclining backrests and adjustable</p>
+            <p>
+              armrests are guarantee you satisfaction for the entire movie time.
+            </p>
+          </div>
+        </li>
+        <li>
+          <div style="display: inline-block; vertical-align: top">
+            <img
+              alt="Cinema shop"
+              class="advantages"
+              src="https://www.lyricbroadway.com/wp-content/uploads/2018/04/Snack_Shop.png"
+            />
+          </div>
+          <div style="display: inline-block; text-align: left">
+            <p><strong>Snack bar</strong></p>
+            <p>
+              We believe everyone needs some snacks while watching a good movie!
+              So
+            </p>
+            <p>our Snack Bar is here to serve you.</p>
+            <p>Buy your favourite treats online and pick them up just before</p>
+            <p>the movie starts! Funny time is yummy time 😋</p>
+          </div>
+        </li>
+      </ul>
+      <hr />
+      <h1 style="color: #a070a1"><i>Now showing</i></h1>
+      <ul>
+        <li class="filmsList">
+          <img
+            alt="Twilight movie poster"
+            class="repertoire"
+            src="https://s3.amazonaws.com/static.rogerebert.com/uploads/movie/movie_poster/twilight-2008/large_nlvPMLCdum7bkHKmDSMnNLGztmW.jpg"
+          /><br />
+          <a href="https://www.imdb.com/title/tt1099212/" target="_blank"
+            >Twilight</a
+          >
+        </li>
+        <li class="filmsList">
+          <img
+            alt="Romeo + Juliet movie poster"
+            class="repertoire"
+            src="https://images-na.ssl-images-amazon.com/images/I/81r48OB9f9L.__AC_SX300_SY300_QL70_ML2_.jpg"
+          /><br />
+          <a href="https://www.imdb.com/title/tt0117509/" target="_blank"
+            >Romeo + Juliet</a
+          >
+        </li>
+        <li class="filmsList">
+          <img
+            alt="Great Gatsby movie poster"
+            class="repertoire"
+            src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/miniature-schnauzer-art-canvas-print-the-great-gatsby-movie-poster-sandra-sij.jpg"
+          /><br />
+          <a href="https://www.imdb.com/title/tt1343092/" target="_blank"
+            >Great Gatsby</a
+          >
+        </li>
+      </ul>
+      <h1 style="color: #a070a1"><i>Coming soon</i></h1>
+      <ul>
+        <li class="filmsList">
+          <img
+            alt="The Twilight Saga: New Moon movie poster"
+            class="repertoire"
+            src="https://www.movieguide.org/wp-content/uploads/2012/08/twilight_01-768x1137.jpg"
+          />
+          <br />
+          <a href="https://www.imdb.com/title/tt1259571/" target="_blank"
+            >The Twilight Saga: New Moon</a
+          >
+        </li>
+        <li class="filmsList">
+          <img
+            alt="Jungle Cruise movie poster"
+            class="repertoire"
+            src="https://i0.wp.com/teaser-trailer.com/wp-content/uploads/Jungle-Cruise-movie-poster.jpg?resize=405%2C600&ssl=1"
+          /><br />
+          <a href="https://www.imdb.com/title/tt0870154/" target="_blank"
+            >Jungle Cruise</a
+          >
+        </li>
+        <li class="filmsList">
+          <img
+            alt="Jumanji: The Next Level"
+            class="repertoire"
+            src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/e3f9b393257705.5e5ff618e4b07.jpg"
+          />
+          <br />
+          <a href="https://www.imdb.com/title/tt7975244/" target="_blank"
+            >Jumanji: The Next Level</a
+          >
+        </li>
+      </ul>
+      <button class="buyTickets">Buy tickets</button>
+      <hr />
+      <h1 style="color: #a070a1"><i>Snack Bar</i></h1>
+      <span>
+        Choose your favourite snack without waiting in a queue. Buy online —
+        enjoy offline!
+      </span>
+      <ul>
+        <li class="filmsList">
+          <h2><em>Pop Corn</em></h2>
+          <img
+            alt="Pop Corn picture"
+            class="menuPicture"
+            src="https://media.istockphoto.com/photos/popcorn-in-bucket-picture-id497857462?k=20&m=497857462&s=612x612&w=0&h=K52Js9yjuJypB2IErGa-AjQ4OY7WI6HYakcIcjfPmx0="
+          />
+          <div>
+            <div>Price: £4.95</div>
+            <div>You ordered:</div>
+            <div>
+              <p>
+                <span class="orderedNumber1">0</span>
+                pcs
+              </p>
+              <p class="changeButtons">
+                <button class="plus product1plus">+</button>
+                <button class="minus product1min">-</button>
+              </p>
+            </div>
+          </div>
+        </li>
+        <li class="filmsList">
+          <h2><em>Chips</em></h2>
+
+          <img
+            alt="Chips picture"
+            class="menuPicture"
+            src="https://t4.ftcdn.net/jpg/00/43/14/87/240_F_43148751_w0CQooCe4iVOu9pfBNZ5UU9i0wBIrnLd.jpg"
+          />
+
+          <div>
+            <div>Price: £2.99</div>
+            <div>Your ordered:</div>
+            <div>
+              <p>
+                <span class="orderedNumber2">0</span>
+                pcs
+              </p>
+              <p class="changeButtons">
+                <button class="plus product2plus">+</button>
+                <button class="minus product2min">-</button>
+              </p>
+            </div>
+          </div>
+        </li>
+        <li class="filmsList">
+          <h2><em>Cola</em></h2>
+
+          <img
+            alt="Cola picture"
+            class="menuPicture"
+            src="https://kraftelderlaw.com/wp-content/uploads/Lcd5eBoc4-200x300.jpg"
+          />
+
+          <div>
+            <div>Price: £1.30</div>
+            <div>You ordered:</div>
+            <div>
+              <p>
+                <span class="orderedNumber3">0</span>
+                pcs
+              </p>
+              <p class="changeButtons">
+                <button class="plus product3plus">+</button>
+                <button class="minus product3min">-</button>
+              </p>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <button class="payYourOrder">Pay your order</button>
+      <hr />
+      <div><strong>Contact us:</strong></div>
+      <span
+        ><strong>Email: </strong>support@iwecinemalovers.com &nbsp;&nbsp;
+        <strong> Instagram:</strong> @iwecinemalovers</span
+      >
+      <div><button class="stillNeedHelp">Still need help?</button></div>
+
+      <span
+        ><i
+          >Created by
+          <a href="https://www.linkedin.com/in/sh9vch9nk0/" target="_blank">
+            Anna Shevchenko</a
+          ></i
+        ></span
+      >
+    </div>
+  </body>
+  <script>
+    let orderText1 = 0;
+    function changeNumber1(newNumber1) {
+      let orderText1 = document.querySelector(".orderedNumber1");
+      orderText1.innerHTML = newNumber1;
+    }
+
+    function changeNumber1plus() {
+      orderText1 = orderText1 + 1;
+      changeNumber1(`${orderText1}`);
+    }
+    function changeNumber1min() {
+      if (orderText1 > 0) {
+        orderText1 = orderText1 - 1;
+        changeNumber1(`${orderText1}`);
+      }
+    }
+    function total() {}
+    let plusButton1 = document.querySelector(".product1plus");
+    plusButton1.addEventListener("click", changeNumber1plus);
+
+    let minButton1 = document.querySelector(".product1min");
+    minButton1.addEventListener("click", changeNumber1min);
+
+    let orderText2 = 0;
+    function changeNumber2(newNumber2) {
+      let orderText2 = document.querySelector(".orderedNumber2");
+      orderText2.innerHTML = newNumber2;
+    }
+
+    function changeNumber2plus() {
+      orderText2 = orderText2 + 1;
+      changeNumber2(`${orderText2}`);
+    }
+    function changeNumber2min() {
+      if (orderText2 > 0) {
+        orderText2 = orderText2 - 1;
+        changeNumber2(`${orderText2}`);
+      }
+    }
+
+    let plusButton2 = document.querySelector(".product2plus");
+    plusButton2.addEventListener("click", changeNumber2plus);
+
+    let minButton2 = document.querySelector(".product2min");
+    minButton2.addEventListener("click", changeNumber2min);
+
+    let orderText3 = 0;
+    function changeNumber3(newNumber3) {
+      let orderText3 = document.querySelector(".orderedNumber3");
+      orderText3.innerHTML = newNumber3;
+    }
+
+    function changeNumber3plus() {
+      orderText3 = orderText3 + 1;
+      changeNumber3(`${orderText3}`);
+    }
+    function changeNumber3min() {
+      if (orderText3 > 0) {
+        orderText3 = orderText3 - 1;
+        changeNumber3(`${orderText3}`);
+      }
+    }
+
+    let plusButton3 = document.querySelector(".product3plus");
+    plusButton3.addEventListener("click", changeNumber3plus);
+
+    let minButton3 = document.querySelector(".product3min");
+    minButton3.addEventListener("click", changeNumber3min);
+
+    function buyTickets() {
+      let userAge = prompt("What's your age?");
+      if (userAge < 13) {
+        alert("Sorry, you are not eligible to buy tickets without adults 😥");
+      } else {
+        prompt("What's your email?");
+        alert("Great 👍 We'll get in touch with you in less than 2 minutes!");
+      }
+    }
+    let userBuyTickets = document.querySelector(".buyTickets");
+    userBuyTickets.addEventListener("click", buyTickets);
+
+    function signIn() {
+      let email = prompt("What's your email?");
+      let password = prompt("What's your password?");
+      let h1 = document.querySelector(".h1");
+      h1.innerHTML =
+        "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This page doesn't exist yet 😓";
+    }
+    let userSignIn = document.querySelector(".signIn");
+    userSignIn.addEventListener("click", signIn);
+
+    function signUp() {
+      let firstName = prompt("What's your first name?");
+      let lastName = prompt("What's your last name?");
+      let fullName = firstName + " " + lastName;
+      let email = prompt(fullName + ", what's your email?");
+      let h1 = document.querySelector(".h1");
+      h1.innerHTML =
+        "<div>Thank you ❣&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>" +
+        "<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We'll send you a confirmation email </div>" +
+        "<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to verify that the address is correct.</div>";
+    }
+    let userSignUp = document.querySelector(".signUp");
+    userSignUp.addEventListener("click", signUp);
+
+    function stillNeedHelp() {
+      let name = prompt`What's your name?`;
+      let email = prompt`What's your email?`;
+      alert(
+        name +
+          ", thank you for contacting us, we will reach back to you in a short time."
+      );
+    }
+    let userStillNeedHelp = document.querySelector(".stillNeedHelp");
+    userStillNeedHelp.addEventListener("click", stillNeedHelp);
+
+    function payYourOrder() {
+      alert`You've got great taste! Thank you for your order 🤗`;
+    }
+    let userPayYourOrder = document.querySelector(".payYourOrder");
+    userPayYourOrder.addEventListener("click", payYourOrder);
+  </script>
+</html>
